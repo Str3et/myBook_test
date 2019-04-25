@@ -6,11 +6,74 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ title }}</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{{ url_for('static', filename = 'css/mdb.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'css/style.css')}}" rel="stylesheet">
 </head>
-<body>
+<body class="amber lighten-5">
 
-<h2>Hello book`s</h2>
-<h2>Привет книжки!</h2>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark brown darken-2">
+        <a class="navbar-brand" href="#"><strong>Книжная полка</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fab fa-instagram"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main class="mx-auto">
+    <h1 class="container text-center border-bottom my-5">Моя книжная полка с ресурса myBook</h1>
+
+    <table class="table table-hover">
+        <thead class="brown lighten-1 text-white">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Обложка</th>
+            <th scope="col">Название</th>
+            <th scope="col">Автор</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>{{ response }}</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</main>
 
 </body>
 </html>
