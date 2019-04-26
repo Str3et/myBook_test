@@ -1,21 +1,17 @@
-from flask import request
-import json
 import requests
+import pprint
+
+from config import AUTH_URL, BOOK_LIST_URL, HEADERS
 
 
-from config import AUTH_URL, BOOK_LIST_URL
-
-
-def test_mybook():
-    post_result = requests.post(AUTH_URL, data={'email': 'str3ett@yandex.ru', 'password': '456Street456'})
-
-    # result = post_result.json()
-    print(post_result)
-    # data_dict = json.loads(post_result)
-    # print(data_dict)
-    book_list = requests.get(BOOK_LIST_URL, data=post_result)
+def mybook(user_email, user_password):
+    session = requests.Session()
+    # post_result = session.post(AUTH_URL, json={'email': 'str3ett@yandex.ru', 'password': '456Street456'})
+    post_result = session.post(AUTH_URL, json={'email': user_email, 'password': user_password})
+    book_list = session.get(BOOK_LIST_URL, data=post_result, headers=HEADERS)
     book = book_list.json()
-    print(book)
-    return book
+    data_book = book['objects']
 
-# data={'email': 'str3ett@yandex.ru', 'password': '456Street456'}
+    pprint.pprint(data_book)
+
+    return data_book

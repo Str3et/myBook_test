@@ -31,36 +31,13 @@
     </nav>
 </header>
 
-<main class="mx-auto mb-5">
-    <h1 class="container text-center border-bottom my-5">Моя книжная полка с ресурса myBook</h1>
-    {% if response != [] %}
-    <table class="table table-hover">
-        <thead class="brown lighten-1 text-white">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Обложка</th>
-            <th scope="col">Название</th>
-            <th scope="col">Автор</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for el in response %}
-        <tr>
-            <th scope="row">1</th>
-            <td>{{ el.book.default_cover }}</td>
-            <td>{{ el.book.name }}</td>
-            <td>{{ el.book.authors_names }}</td>
-        </tr>
-        {% endfor %}
-        {% else %}
-        <div class="container text-center">
-            <h2 class="text-white brown">Ваша книжная полка пуста. Пора что-то добавить.</h2>
-        </div>
-        {% endif %}
-        </tbody>
-    </table>
-
-
+<main class="mx-auto my-5">
+    <form class="text-center border border-light p-5 w-50 mx-auto" action="" method="post">
+        <p class="h4 mb-4">Укажите Вашу почту и пароль</p>
+        <input name="email" required type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+        <input name="password" required type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+        <button class="btn brown btn-block my-4" type="submit">Показать полку</button>
+    </form>
 </main>
 
 <script type="text/javascript" src="{{url_for('static', filename = 'js/jquery-3.3.1.min.js')}}"></script>
