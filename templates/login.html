@@ -21,9 +21,14 @@
         <div class="container d-flex justify-content-between align-content-center">
             <a href="{{ url_for('main') }}" class="navbar-brand p-0 m-0 white-text"><strong>Книжная полка</strong></a>
             <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
+                <li class="nav-item mx-2">
                     <a class="text-white mt-2" href="{{ url_for('login') }}">
                         <i class="far fa-user-circle fa-2x"></i>
+                    </a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="text-white mt-2" href="{{ url_for('logout') }}">
+                        <i class="fas fa-sign-out-alt fa-2x"></i>
                     </a>
                 </li>
             </ul>
@@ -34,8 +39,10 @@
 <main class="mx-auto my-5">
     <form class="text-center border border-light p-5 w-50 mx-auto" action="" method="post">
         <p class="h4 mb-4">Укажите Вашу почту и пароль</p>
-        <input name="email" required type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-        <input name="password" required type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+        <input name="email" required type="email" id="defaultLoginFormEmail" class="form-control mb-4"
+               placeholder="E-mail">
+        <input name="password" required type="password" id="defaultLoginFormPassword" class="form-control mb-4"
+               placeholder="Password">
         <button class="btn brown btn-block my-4" type="submit">Показать полку</button>
     </form>
 </main>

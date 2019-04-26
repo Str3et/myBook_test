@@ -11,7 +11,5 @@ def mybook(user_email, user_password):
     book_list = session.get(BOOK_LIST_URL, data=post_result, headers=HEADERS)
     book = book_list.json()
     data_book = book['objects']
-
-    pprint.pprint(data_book)
-
+    pprint.pprint(book)
     return data_book

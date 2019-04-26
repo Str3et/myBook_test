@@ -21,9 +21,14 @@
         <div class="container d-flex justify-content-between align-content-center">
             <a href="{{ url_for('main') }}" class="navbar-brand p-0 m-0 white-text"><strong>Книжная полка</strong></a>
             <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
+                <li class="nav-item mx-2">
                     <a class="text-white mt-2" href="{{ url_for('login') }}">
                         <i class="far fa-user-circle fa-2x"></i>
+                    </a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="text-white mt-2" href="{{ url_for('logout') }}">
+                        <i class="fas fa-sign-out-alt fa-2x"></i>
                     </a>
                 </li>
             </ul>
@@ -32,9 +37,9 @@
 </header>
 
 <main class="mx-auto mb-5">
-    <h1 class="container text-center border-bottom my-5">Моя книжная полка с ресурса myBook</h1>
     {% if response != [] %}
-    <table class="table table-hover">
+        <h1 class="container text-center border-bottom my-5">Моя ({{ user_email }}) книжная полка с ресурса myBook</h1>
+        <table class="table table-hover">
         <thead class="brown lighten-1 text-white">
         <tr>
             <th scope="col">#</th>
@@ -46,17 +51,18 @@
         <tbody>
         {% for el in response %}
         <tr>
-            <th scope="row">1</th>
-            <td>{{ el.book.default_cover }}</td>
+            <th scope="row">{{ loop.index }}</th>
+            <td><img src="{{ 'https://i1.mybook.io/p/600x/'+el.book.default_cover }}" alt="" width="80"></td>
             <td>{{ el.book.name }}</td>
             <td>{{ el.book.authors_names }}</td>
         </tr>
         {% endfor %}
-        {% else %}
+    {% else %}
+        <h1 class="container text-center border-bottom my-5">Книжная полка с ресурса myBook</h1>
         <div class="container text-center">
             <h2 class="text-white brown">Ваша книжная полка пуста. Пора что-то добавить.</h2>
         </div>
-        {% endif %}
+    {% endif %}
         </tbody>
     </table>
 
