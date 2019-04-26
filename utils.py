@@ -1,15 +1,16 @@
 import requests
-import pprint
 
 from config import AUTH_URL, BOOK_LIST_URL, HEADERS
 
 
 def mybook(user_email, user_password):
+
     session = requests.Session()
-    # post_result = session.post(AUTH_URL, json={'email': 'str3ett@yandex.ru', 'password': '456Street456'})
+    #  отправляем POSTом данные пользователя на API для логина
     post_result = session.post(AUTH_URL, json={'email': user_email, 'password': user_password})
+    #  получаем данные о книгах пользователя
     book_list = session.get(BOOK_LIST_URL, data=post_result, headers=HEADERS)
     book = book_list.json()
     data_book = book['objects']
-    pprint.pprint(book)
+
     return data_book
